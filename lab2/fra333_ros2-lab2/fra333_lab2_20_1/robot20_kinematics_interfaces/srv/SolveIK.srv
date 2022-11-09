@@ -1,0 +1,8 @@
+# add resquest
+geometry_msgs/Point pos
+int32[2] gamma
+---
+# add response
+sensor_msgs/JointState joint_state
+bool flag
+
