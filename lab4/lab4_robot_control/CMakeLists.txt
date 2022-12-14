@@ -31,6 +31,7 @@ install(PROGRAMS
   scripts/Scheduler.py
   scripts/trajectory_generator.py
   scripts/tracker.py
+  scripts/marker.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

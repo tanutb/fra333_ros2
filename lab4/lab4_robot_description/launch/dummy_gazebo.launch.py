@@ -34,7 +34,6 @@ def generate_launch_description():
     )
 
 
-
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory('gazebo_ros'), 'launch'), '/gazebo.launch.py']),
@@ -57,16 +56,53 @@ def generate_launch_description():
         executable="spawner.py",
         arguments=["velocity_controllers", "--controller-manager", "/controller_manager"],
     )
+    
+    # package_name = "lab4_robot_description"
+    # rviz_file_name = 'config_robot.rviz'
+    # rviz_file_path = os.path.join(
+    #     get_package_share_directory(package_name),
+    #     'config',
+    #     rviz_file_name
+    # )
+    
+    # rviz_Node = Node(
+    #     package='rviz2',
+    #     executable='rviz2',
+    #     name='rviz',
+    #     arguments=['-d', rviz_file_path],
+    #     output='screen')
+    
+    tracker = Node(
+    package="lab4_robot_control",
+    executable="tracker.py",
+    )
+    proximity_detector = Node(
+    package="lab4_robot_control",
+    executable="proximity_detector.py",
+    )
+    trajectory_generator = Node(
+    package="lab4_robot_control",
+    executable="trajectory_generator.py",
+    )
+    marker = Node(
+    package="lab4_robot_control",
+    executable="marker.py",
+    )
+    Scheduler = Node(
+    package="lab4_robot_control",
+    executable="Scheduler.py",
+    )
 
 
     # Run the node
     return LaunchDescription([
-
         gazebo,
         node_robot_state_publisher,
         spawn_entity,
         joint_state_broadcaster_spawner,
-        robot_controller_spawner
+        robot_controller_spawner,
+
+        
     ])
 
 
