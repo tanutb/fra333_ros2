@@ -26,7 +26,7 @@ class proximity_detector(Node):
         P = FPK(self.q)
         pos = np.array(P[-1][:3,3])
         print(pos)
-        if((abs(np.array(self.p_f) - pos) <= 0.01).all()):
+        if((abs(np.array(self.p_f) - pos) <= 0.001).all()):
             self.hasReached = True
         else:
             self.hasReached = False

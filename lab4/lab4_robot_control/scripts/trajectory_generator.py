@@ -30,9 +30,9 @@ class generator(Node):
         self.q_r_dot = np.array([0.,0.,0.])
         self.dt = 0.1
         self.t = 0.
-        self.T = 2.
-        self.p_init =  np.array([0.,0.,0.])
-        self.p_final = np.array([0.,0.,0.])
+        self.T = 5.
+        self.p_init =  np.array([0.3099999,0.,0.13499999])
+        self.p_final = np.array([0.3099999,0.,0.13499999])
 
     def Pi_sub_callback(self,msg:Float64MultiArray):
         self.p_init = np.array(msg.data)
@@ -79,7 +79,7 @@ class generator(Node):
         
         print(p_r)
         #Inverse position
-        Gamma = [1,1]
+        Gamma = [1,-1]
         self.q_r = IPK(Gamma[0],Gamma[1],p_r[0],p_r[1],p_r[2])
         #Inverse Velocity
         self.q_r_dot = IVK(self.q_r[0],p_r_dot)

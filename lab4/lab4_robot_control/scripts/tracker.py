@@ -33,8 +33,8 @@ class tracker(Node):
         self.q_ref_dot = np.array([0.,0.,0.])
 
         # Change to read data from yaml
-        self.Kp = 1
-        self.Ki = 0.01
+        self.Kp = 2.5
+        self.Ki = 0.2
         
         self.sum_error_q = 0
         
